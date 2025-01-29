@@ -1,0 +1,74 @@
+ID,NOME POPULAR,NOME CIENTIFICO,N COTILEDONES,N PETALAS,M OU D
+1,Samambaia,Pteridophyta,0,0, -
+2,Cacto-Saguaro,Carnegiea gigantea,2,0,D
+3,Aloe-Vera,Aloe barbadensis miller,2,6,D
+4,Lavanda,Lavandula angustifolia,2,5,D
+5,Orquidea,Orchidaceae,2,3,D
+6,Begonia,Begonia,2,4,D
+7,Suculentas,Crassulaceae,2,0,D
+8,Gerbera,Gerbera jamesonii,2,15,D
+9,Agave,Agave americana,2,6,D
+10,Espada-de-Sao-Jorge,Sansevieria trifasciata,1,0,M
+11,Jasmim,Jasminum,2,5,D
+12,Lirio-da-paz,Spathiphyllum wallisii,1,0,M
+13,Camelia,Camellia japonica,2,5,D
+14,Bromelia,Bromeliaceae,1,0,M
+15,Cravo,Dianthus caryophyllus,2,5,D
+16,Crisantemo,Chrysanthemum,2,0,D
+17,Dahlia,Dahlia pinnata,2,10,D
+18,Gardenia,Gardenia jasminoides,2,5,D
+19,Hortensia,Hydrangea macrophylla,1,4,M
+20,Iris,Iris germanica,1,6,M
+21,Jacinto,Hyacinthus orientalis,1,6,M
+22,Lavanda,Lavandula angustifolia,2,5,D
+23,Lirio,Lilium,1,6,M
+24,Margarida,Bellis perennis,2,34,D
+25,Narciso,Narcissus pseudonarcissus,1,6,M
+26,Nenufar,Nymphaea,1,0,M    
+27,Peonia,Paeonia,2,5,D
+28,Petunia,Petunia hybrida,2,5,D
+29,Planta-cobra,Sansevieria trifasciata,1,0,M
+30,Rosa,Rosa,2,5,D
+31,Salgueiro-chorao,Salix babylonica,2,0,D
+32,Salvia,Salvia officinalis,2,0,M
+33,Tulipa,Tulipa gesneriana,1,6,M
+34,Violeta,Viola,2,5,D
+35,Yuca,Yucca filamentosa,1,0,M
+36,Verbena,Verbena officinalis,2,5,D
+37,Filodendro,Philodendron,2,0,D
+38,Hera,Hedera helix,2,0,D
+39,Calanchoe,Kalanchoe blossfeldiana,2,0,D
+40,Capim-limao,Cymbopogon citratus,0,0,M
+41,Trevo-de-quatro-folhas,Oxalis tetraphylla,2,0,D
+42,Maconha,Cannabis sativa,2,0,D
+43,Lirio-do-vale,Convallaria majalis,1,6,M
+44,Clorofito,Chlorophytum comosum,1,0,M
+45,Figueira,Ficus carica,2,0,D
+46,Alocasia,Alocasia macrorrhizos,1,0,M
+47,Ave-do-paraiso,Strelitzia reginae,1,3,M
+48,Anturio,Anthurium andraeanum,1,0,M
+49,Cactos,Cactaceae,2,0,D
+50,Heliconia,Heliconia rostrata,1,0,M
+51,Lobelia,Lobelia erinus,2,5,D
+52,Verbena,Verbena officinalis,2,5,D
+53,Alface-do-mar,Ulva lactuca,0,0,-
+54,Aipo-selvagem,Apium graveolens,1,0,M
+55,Calendula,Calendula officinalis,2,5,D
+56,Celosia,Celosia argentea,2,0,D
+57,Coneflower,Echinacea purpurea,2,5,D
+58,Coleus,Plectranthus scutellarioides,2,5,D
+59,Cosmos,Cosmos bipinnatus,2,8,D
+60,Dente-de-leao,Taraxacum officinale,2,0,D
+61,Dedaleira,Digitalis purpurea,2,0,D
+62,Fuscia,Fuchsia magellanica,2,4,D
+63,Gazania,Gazania rigens,2,5,D
+64,Hosta,Hosta plantaginea,1,0,M
+65,Impatiens,Impatiens walleriana,1,5,M
+66,Jacinto,Hyacinthus orientalis,1,6,M
+67,Jasmim-manga,Plumeria rubra,2,5,D
+68,Lantana,Lantana camara,2,5,D
+69,Lobelia,Lobelia erinus,2,5,D
+70,Lupino,Lupinus polyphyllus,2,5,D
+71,Madressilva,Lonicera japonica,2,5,D
+72,Nicotiana,Nicotiana tabacum,2,0,D
+73,Palmeira-rafia,Raphia farinifera,1,3,M
