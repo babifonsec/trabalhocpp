@@ -7,7 +7,8 @@
 
 using namespace std;
 
-struct Planta {
+struct Planta 
+{
     int id;
     string nome; // PODE possuir espacos
     string nomeCientifico; // possui espacos
@@ -16,11 +17,13 @@ struct Planta {
     char classe; // se e mono ou dicotiledonea
 };
 
-Planta* aumentarCapacidade(Planta* vetor, int& tam) {
+Planta* aumentarCapacidade(Planta* vetor, int& tam) 
+{
     int novoTam = tam + 10;
     Planta* novo = new Planta[novoTam];
 
-    for (int i = 0; i < tam; ++i) {
+    for (int i = 0; i < tam; ++i) 
+    {
         novo[i] = vetor[i];
     }
     
@@ -31,18 +34,21 @@ Planta* aumentarCapacidade(Planta* vetor, int& tam) {
     return vetor;
 }
 
-Planta* importarCSV(Planta* vetor, int& tam, int& qtde) {
+Planta* importarCSV(Planta* vetor, int& tam, int& qtde) 
+{
     string linha;
     ifstream arquivo("arquivo.csv");
     
-    if (!arquivo.is_open()) {
+    if (!arquivo.is_open()) 
+    {
         cerr << "Erro ao abrir o arquivo CSV" << endl;
         return vetor;
     }
 
     getline(arquivo, linha); // joga fora a primeira linha
     
-    while (getline(arquivo, linha)) { 
+    while (getline(arquivo, linha)) 
+    { 
         stringstream ss(linha); // passa a linha para a ss
         string campo;
         getline(ss, campo, ','); // separa a linha em campos ate a virgula
@@ -58,7 +64,8 @@ Planta* importarCSV(Planta* vetor, int& tam, int& qtde) {
 
         qtde++;
 
-        if (qtde >= tam) {
+        if (qtde >= tam) 
+        {
             vetor = aumentarCapacidade(vetor, tam);
         }
     }
@@ -68,7 +75,8 @@ Planta* importarCSV(Planta* vetor, int& tam, int& qtde) {
     return vetor;
 }
 
-void inserir(Planta *vetor, int& tam, int& qtde){
+void inserir(Planta *vetor, int& tam, int& qtde)
+{
     Planta novaPlantinha;
 
     cout << "Nome popular:" << endl;
@@ -85,27 +93,35 @@ void inserir(Planta *vetor, int& tam, int& qtde){
     
     // encontrar um id único para a nova planta
     int novoId = 1;
-    for (int i = 0; i < qtde; i++) {
-        if (vetor[i].id >= novoId) {
+    for (int i = 0; i < qtde; i++) 
+    {
+        if (vetor[i].id >= novoId) 
+        {
             novoId = vetor[i].id + 1;
+			cout << "Dados inseridos com sucesso!" << endl;
         }
     }
     novaPlantinha.id = novoId;
     
-    if (qtde >= tam) {
+    if (qtde >= tam) 
+    {
         vetor = aumentarCapacidade(vetor, tam);
     }
     
     vetor[qtde] = novaPlantinha;
     qtde++;
+   
 }
 
-void remover (Planta *vetor, int& tam){
+void remover (Planta *vetor, int& tam)
+{
 	int id;
 	cout<<"Digite o id da planta a ser removida"<<endl;
 	cin>>id;
-	for(int i =0; i<tam; i++){
-		if(vetor[i].id == id){
+	for(int i =0; i<tam; i++)
+	{
+		if(vetor[i].id == id)
+		{
 			vetor[i].id=0;
 			cout<<"Item removido com sucesso"<<endl;
 		}	
@@ -115,13 +131,16 @@ void remover (Planta *vetor, int& tam){
 	
 }
 
-void editar(Planta* vetor, int tam) {
+void editar(Planta* vetor, int tam) 
+{
 	int id;
 	cout<<"Digite o id da planta a ser editada:"<<endl;
 	cin>>id;
 	
-    for (int i = 0; i < tam; ++i) {
-        if (vetor[i].id == id) {
+    for (int i = 0; i < tam; ++i) 
+    {
+        if (vetor[i].id == id) 
+        {
             cout << "Digite o novo nome:" << endl;
             cin.ignore();
             getline(cin, vetor[i].nome);
@@ -137,12 +156,15 @@ void editar(Planta* vetor, int tam) {
             return;
         }
     }
-    cout << "Planta não encontrada." << endl;
+    cout << "Planta nao encontrada." << endl;
   }
 
-void shellSortPorNome(Planta vetor[], int tam) {
-    for (int gap = tam / 2; gap > 0; gap /= 2) {
-        for (int i = gap; i < tam; i++) {
+void shellSortPorNome(Planta vetor[], int tam) 
+{
+    for (int gap = tam / 2; gap > 0; gap /= 2) 
+    {
+        for (int i = gap; i < tam; i++) 
+        {
             Planta aux = vetor[i];
             int j;
             for (j = i; j >= gap && vetor[j - gap].nome > aux.nome; j -= gap) {
@@ -154,12 +176,16 @@ void shellSortPorNome(Planta vetor[], int tam) {
 	cout<<"Vetor ordenado com sucesso"<<endl;
 }
 
-void shellSortPorID(Planta vetor[], int tam) {
-    for (int gap = tam / 2; gap > 0; gap /= 2) {
-        for (int i = gap; i < tam; i++) {
+void shellSortPorID(Planta vetor[], int tam) 
+{
+    for (int gap = tam / 2; gap > 0; gap /= 2) 
+    {
+        for (int i = gap; i < tam; i++) 
+        {
             Planta aux = vetor[i];
             int j;
-            for (j = i; j >= gap && vetor[j - gap].id > aux.id; j -= gap) {
+            for (j = i; j >= gap && vetor[j - gap].id > aux.id; j -= gap) 
+            {
                 vetor[j] = vetor[j - gap];
             }
             vetor[j] = aux;
@@ -168,129 +194,156 @@ void shellSortPorID(Planta vetor[], int tam) {
     cout<<"Vetor ordenado com sucesso"<<endl;
 }
 
-void toString (Planta planta){ //para imprimir uma planta so
+void toString (Planta planta)
+{ //para imprimir uma planta so
 	cout<< "ID: " <<planta.id<<endl;
 	cout<< "Nome: " <<planta.nome<<endl;
-	cout<< "Nome Científico: " <<planta.nomeCientifico<<endl;
-	cout<< "Número de Cotiledones: " <<planta.nCotiledones<<endl;
-	cout<< "Número de Petálas: " <<planta.nPetalas<<endl;
+	cout<< "Nome Cientifico: " <<planta.nomeCientifico<<endl;
+	cout<< "Numero de Cotiledones: " <<planta.nCotiledones<<endl;
+	cout<< "Numero de Petalas: " <<planta.nPetalas<<endl;
 	cout<< "Classe: " <<planta.classe<<endl;
 
 }
 
-void buscarPorID(Planta vetor[], int tam) {
+void buscarPorID(Planta vetor[], int tam) 
+{
     int id = 0;
     cout << "Digite o ID da planta a ser procurada: ";
     cin >> id;
     
     int inicio = 0, fim = tam - 1;
     bool encontrada = false;
-    while (inicio <= fim && !encontrada) {
+    while (inicio <= fim && !encontrada) 
+    {
         int meio = inicio + (fim - inicio) / 2;
 
         // verifica se o id está no meio
-        if (vetor[meio].id == id) {
+        if (vetor[meio].id == id) 
+        {
             toString(vetor[meio]);
             encontrada = true;
         }
         // ignora a metade esquerda
-        else if (vetor[meio].id < id) {
+        else if (vetor[meio].id < id) 
+        {
             inicio = meio + 1;
         }
         // ignora a metade direita
-        else {
+        else 
+        {
             fim = meio - 1;
         }
     }
 
-    if (!encontrada) {
-        cout << "Planta não encontrada." << endl;
+    if (!encontrada) 
+    {
+        cout << "Planta nao encontrada." << endl;
     }
 }
 
-void buscarPorNome(Planta vetor[], int tam) {
+void buscarPorNome(Planta vetor[], int tam) 
+{
     string nome = "";
     cout << "Digite o Nome da planta a ser procurada: ";
     cin >> nome;
     
-    if(!nome.empty()){
+    if(!nome.empty())
+    {
 		nome[0] = toupper(nome[0]); //convertendo a primeira letra em maiscula
 	}
     
     int inicio = 0, fim = tam - 1;
     bool encontrada = false; 
-    while (inicio <= fim && !encontrada) {
+    while (inicio <= fim && !encontrada) 
+    {
         int meio = inicio + (fim - inicio) / 2;
 
-        if (vetor[meio].nome == nome) {
+        if (vetor[meio].nome == nome) 
+        {
             toString(vetor[meio]);
             encontrada = true;
         }
-        else if (vetor[meio].nome < nome) {
+        else if (vetor[meio].nome < nome) 
+        {
             inicio = meio + 1;
         }
-        else {
+        else 
+        {
             fim = meio - 1;
         }
     }
 
-    if (!encontrada) {
-        cout << "Planta não encontrada." << endl;
+    if (!encontrada) 
+    {
+        cout << "Planta nao encontrada." << endl;
     }
 }
 
-void salvarEmBinario(Planta* vetor, int tam) {
+void salvarEmBinario(Planta* vetor, int tam) 
+{
     ofstream arquivoBinario("plantas.bin", ios::binary | ios::out);
-    if (!arquivoBinario) {
-        cout << "Erro ao carregar o arquivo binário" << endl;
-    } else {
-        for (int i = 0; i < tam; i++) {
+    if (!arquivoBinario) 
+    {
+        cout << "Erro ao carregar o arquivo binario" << endl;
+    } else 
+    {
+        for (int i = 0; i < tam; i++) 
+        {
             arquivoBinario.write(reinterpret_cast<const char*>(&vetor[i]), sizeof(Planta));
         }
         arquivoBinario.close();
-        cout << "Arquivo binário criado com sucesso" << endl;
+        cout << "Arquivo binario criado com sucesso" << endl;
     }
 }
 
-void imprimir(Planta vetor[], int tam) { //imprime o vetor inteiro
-    for (int i = 0; i < tam; i++) {
-        if (vetor[i].id != 0) {
+void imprimir(Planta vetor[], int tam) 
+{ //imprime o vetor inteiro
+    for (int i = 0; i < tam; i++) 
+    {
+        if (vetor[i].id != 0) 
+        {
             cout << "ID: " << vetor[i].id << endl;
             cout << "Nome: " << vetor[i].nome << endl;
-            cout << "Nome Científico: " << vetor[i].nomeCientifico << endl;
-            cout << "Número de Cotiledones: " << vetor[i].nCotiledones << endl;
-            cout << "Número de Petálas: " << vetor[i].nPetalas << endl;
+            cout << "Nome Cientifico: " << vetor[i].nomeCientifico << endl;
+            cout << "Numero de Cotiledones: " << vetor[i].nCotiledones << endl;
+            cout << "Numero de Petalas: " << vetor[i].nPetalas << endl;
             cout << "Classe: " << vetor[i].classe << endl;
         }
     }
 }
 
-void imprimirIntervalo(Planta vetor[], int tam){
+void imprimirIntervalo(Planta vetor[], int tam)
+{
 	int fim=0, inicio=0;
 	cout<< "Digite o indice de inicio:"<<endl;
 	cin>>inicio;
 	cout<<"Digite o indice de fim:"<<endl;
 	cin>>fim;
 	
-	if (inicio >= 0 && inicio <= fim && fim < tam) {
-		for(int i=inicio; i<=fim; i++){
+	if (inicio >= 0 && inicio <= fim && fim < tam) 
+	{
+		for(int i=inicio; i<=fim; i++)
+		{
 			cout << "ID: " << vetor[i].id << endl;
             cout << "Nome: " << vetor[i].nome << endl;
-            cout << "Nome Científico: " << vetor[i].nomeCientifico << endl;
-            cout << "Número de Cotiledones: " << vetor[i].nCotiledones << endl;
-            cout << "Número de Petálas: " << vetor[i].nPetalas << endl;
+            cout << "Nome Cientifico: " << vetor[i].nomeCientifico << endl;
+            cout << "Numero de Cotiledones: " << vetor[i].nCotiledones << endl;
+            cout << "Numero de Petalas: " << vetor[i].nPetalas << endl;
             cout << "Classe: " << vetor[i].classe << endl;
 		}
 	}
 }
 
-void salvarAlteracoes(Planta vetor[], int tam){
+void salvarAlteracoes(Planta vetor[], int tam)
+{
 	ofstream arquivo("arquivo.csv");
 	
     arquivo << "ID,Nome,Nome Cientifico,Numero de Cotiledones,Numero de Petalas,Classe\n"; //reescrevendo o cabecalho
     
-    for(int i =0; i<tam;i++){
-		if(vetor[i].id!=0){
+    for(int i =0; i<tam;i++)
+    {
+		if(vetor[i].id!=0)
+		{
 		arquivo<<vetor[i].id << ",";
 		arquivo<<vetor[i].nome << ",";
 		arquivo<<vetor[i].nomeCientifico << ",";
@@ -305,87 +358,106 @@ void salvarAlteracoes(Planta vetor[], int tam){
     
 }
 
-void menu() {
-    cout << "Escolha uma opção abaixo:" << endl;
-    cout << "Opção 1: Importar dados CSV" << endl;
-    cout << "Opção 2: Inserir dados" << endl;
-    cout << "Opção 3: Remover dados" << endl;
-    cout << "Opção 4: Editar dados" << endl;
-    cout << "Opção 5: Busca" << endl;
-    cout << "Opção 6: Ordenar" << endl;
-    cout << "Opção 7: Imprimir vetor" << endl;
-    cout << "Opção 8: Imprimir intervalo de elementos" << endl;
-    cout << "Opção 9: Salvar alterações" << endl;
-    cout << "Opção 10: Salvar em arquivo binario"<<endl;
-    cout << "Opção 0: Sair" << endl;
+void menu() 
+{
+    cout << "Escolha uma opcao abaixo:" << endl << endl;
+    cout << "Opcao 1: Importar dados CSV" << endl;
+    cout << "Opcao 2: Inserir dados" << endl;
+    cout << "Opcao 3: Remover dados" << endl;
+    cout << "Opcao 4: Editar dados" << endl;
+    cout << "Opcao 5: Busca" << endl;
+    cout << "Opcao 6: Ordenar" << endl;
+    cout << "Opcao 7: Imprimir vetor" << endl;
+    cout << "Opcao 8: Imprimir intervalo de elementos" << endl;
+    cout << "Opcao 9: Salvar alteracoes" << endl;
+    cout << "Opcao 10: Salvar em arquivo binario"<<endl;
+    cout << "Opcao 0: Sair" << endl << endl;
     
 }
 
-int main() {
+int main() 
+{
     int tam = 40, opc = -1, qtde = 0;
     int opc1 = 0, opc2=0;
     Planta* vetor = new Planta[tam];
 
-    while (opc != 0) {
+    while (opc != 0) 
+    {
         menu();
         cin >> opc;
 
-        switch (opc) {
+        switch (opc) 
+        {
             case 1: 
                 vetor = importarCSV(vetor, tam, qtde);
                 break;
+                
             case 2:
 				inserir(vetor, tam, qtde);
                 break;
+                
             case 3:
                 remover(vetor, tam);
                 break;
+                
             case 4:
 				editar(vetor, tam);
                 break;
+                
             case 5:
-				cout<<"Deseja buscar por Nome Popular(1) ou por ID (2)"<<endl;
+				cout<<"Deseja buscar por Nome Popular (1) ou por ID (2)?"<<endl;
 				cin>>opc1;
-				if(opc1==1){
+				if(opc1==1)
+				{
 				buscarPorNome(vetor,tam);
 				}
-				else if(opc1==2){
+				else if(opc1==2)
+				{
 				buscarPorID(vetor, tam);
 				}
 				else cout<<"Opcao invalida"<<endl;
 				break;
+				
             case 6:
-				cout<<"Deseja ordenar por Nome Popular(1) ou por ID (2)"<<endl;
+				cout<<"Deseja ordenar por Nome Popular (1) ou por ID (2)?"<<endl;
 				cin>>opc2;
-				if(opc2==1){
+				if(opc2==1)
+				{
 				shellSortPorNome(vetor,tam);
 				}
-				else if(opc2==2){
+				else if(opc2==2)
+				{
 				shellSortPorID(vetor, tam);
 				}
 				else cout<<"Opcao invalida"<<endl;
 				break;
+				
 			case 7:
 				imprimir(vetor, tam);
 				break;
+				
 			case 8:
 				imprimirIntervalo(vetor,tam);
 				break;
+				
 			case 9:
 				salvarAlteracoes(vetor,tam);
 				break;
+				
 			case 10:
 				salvarEmBinario(vetor, tam);
 				break;
+				
 			case 0:
-				cout<<"Saindo.."<<endl;
+				cout<<"Saindo..."<<endl;
 				break;
+				
 			default:
 				cout<<"Opcao invalida"<<endl;
 				break;
         }
     }
-
-    delete[] vetor;
-    return 0;
+    
+	delete[] vetor;
+return 0;
 }
