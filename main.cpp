@@ -440,12 +440,14 @@ void imprimirIntervalo(Planta vetor[], int qtde) {
 
 	if (inicio >= 0 && inicio <= fim && fim < qtde) {
 		for (int i = inicio; i <= fim; i++) {
-			cout << "ID: " << vetor[i].id << endl;
-			cout << "Nome: " << vetor[i].nome << endl;
-			cout << "Nome Cientifico: " << vetor[i].nomeCientifico << endl;
-			cout << "Numero de Cotiledones: " << vetor[i].nCotiledones << endl;
-			cout << "Numero de Petalas: " << vetor[i].nPetalas << endl;
-			cout << "Classe: " << vetor[i].classe << endl;
+			if(vetor[i].id!=0){
+				cout << "ID: " << vetor[i].id << endl;
+				cout << "Nome: " << vetor[i].nome << endl;
+				cout << "Nome Cientifico: " << vetor[i].nomeCientifico << endl;
+				cout << "Numero de Cotiledones: " << vetor[i].nCotiledones << endl;
+				cout << "Numero de Petalas: " << vetor[i].nPetalas << endl;
+				cout << "Classe: " << vetor[i].classe << endl;
+			}
 		}
 	} else {
 		cout << "Intervalo invalido." << endl;
