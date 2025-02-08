@@ -112,26 +112,28 @@ char validaClasse(){
 	return classe;
 }
 
+string formataString(string texto){
+	
+	if (!texto.empty()) {
+	transform(texto.begin(), texto.end(), texto.begin(), ::tolower);
+	texto[0] = toupper(texto[0]); 
+	}
+	
+	return texto;
+}
+
 void inserir(Planta *vetor, int& tam, int& qtde){
 	Planta novaPlantinha;
     
 	cout << "Nome popular:" << endl;
 	cin.ignore(); // ignora o caractere no buffer
 	getline(cin, novaPlantinha.nome); // getline para permitir espaços 
-	
-	if (!novaPlantinha.nome.empty()) {
-		transform(novaPlantinha.nome.begin(), novaPlantinha.nome.end(), novaPlantinha.nome.begin(), ::tolower);
-		novaPlantinha.nome[0] = toupper(novaPlantinha.nome[0]); 
-	}
+	novaPlantinha.nome = formataString(novaPlantinha.nome);
 			
 	cout << "Nome cientifico:" << endl;
 	getline(cin, novaPlantinha.nomeCientifico); 
+	novaPlantinha.nomeCientifico = formataString(novaPlantinha.nomeCientifico);
 	
-	if (!novaPlantinha.nomeCientifico.empty()) {
-		transform(novaPlantinha.nomeCientifico.begin(), novaPlantinha.nomeCientifico.end(), novaPlantinha.nomeCientifico.begin(), ::tolower);
-		novaPlantinha.nomeCientifico[0] = toupper(novaPlantinha.nomeCientifico[0]); 
-	}
-    
 	cout << "Numero de cotiledones:" << endl;
 	novaPlantinha.nCotiledones = validaInt();
 	
@@ -156,7 +158,7 @@ void inserir(Planta *vetor, int& tam, int& qtde){
     
 	vetor[qtde] = novaPlantinha;
 	qtde++;
-	cout << "Dados inseridos com sucesso!" << endl;
+	cout << "Dados inseridos com sucesso" << endl;
    
 }
 
@@ -194,19 +196,11 @@ void editar(Planta* vetor, int tam) {
 			cout << "Digite o novo nome:" << endl;
 			cin.ignore();
 			getline(cin, vetor[i].nome);
-			
-			if (!vetor[i].nome.empty()) {
-				transform(vetor[i].nome.begin(), vetor[i].nome.end(), vetor[i].nome.begin(), ::tolower);
-				vetor[i].nome[0] = toupper(vetor[i].nome[0]); 
-			}
+			vetor[i].nome = formataString(vetor[i].nome);
 			
 			cout << "Digite o novo nome cientifico:" << endl;
 			getline(cin, vetor[i].nomeCientifico);
-			
-			if (!vetor[i].nomeCientifico.empty()) {
-				transform(vetor[i].nomeCientifico.begin(), vetor[i].nomeCientifico.end(), vetor[i].nomeCientifico.begin(), ::tolower);
-				vetor[i].nomeCientifico[0] = toupper(vetor[i].nomeCientifico[0]); 
-			}
+			vetor[i].nomeCientifico = formataString(vetor[i].nomeCientifico);
 			
 			cout << "Digite o novo numero de cotiledones:" << endl;
 			vetor[i].nCotiledones=validaInt();
@@ -298,12 +292,9 @@ void buscarPorNome(Planta vetor[], int tam){
 	shellSortPorNome(vetor,tam);
 	string nome = "";
 	cout << "Digite o Nome da planta a ser procurada: ";
-	cin >> nome;
-    
-	if (!nome.empty()) {
-		transform(nome.begin(), nome.end(), nome.begin(), ::tolower); //converte tudo pra minusculo
-		nome[0] = toupper(nome[0]); //converte so a primeira para maiuscula
-	}
+	cin.ignore();
+	getline(cin, nome);
+	nome = formataString(nome);
     
 	int inicio = 0, fim = tam - 1;
 	bool encontrada = false; 
@@ -452,8 +443,8 @@ void imprimirIntervalo(Planta vetor[], int qtde) {
 			cout << "ID: " << vetor[i].id << endl;
 			cout << "Nome: " << vetor[i].nome << endl;
 			cout << "Nome Cientifico: " << vetor[i].nomeCientifico << endl;
-			cout << "Número de Cotiledones: " << vetor[i].nCotiledones << endl;
-			cout << "Número de Petalas: " << vetor[i].nPetalas << endl;
+			cout << "Numero de Cotiledones: " << vetor[i].nCotiledones << endl;
+			cout << "Numero de Petalas: " << vetor[i].nPetalas << endl;
 			cout << "Classe: " << vetor[i].classe << endl;
 		}
 	} else {
@@ -527,7 +518,7 @@ int main(){
 			case 5:
 				cout<<"Deseja buscar por Nome Popular (1) ou por ID (2)?"<<endl;
 				cout<<"(Para buscar, ordenaremos o vetor automaticamente)"<<endl;
-				cin>>opc1;
+				opc1=validaInt();
 				
 				if(opc1==1){
 					buscarPorNome(vetor,tam);
@@ -540,7 +531,7 @@ int main(){
 
 			case 6:
 				cout<<"Deseja ordenar por Nome Popular (1) ou por ID (2)?"<<endl;
-				cin>>opc2;
+				opc2=validaInt();
 				
 				if(opc2==1){
 					shellSortPorNome(vetor,tam);
